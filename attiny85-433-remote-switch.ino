@@ -42,16 +42,8 @@ void sleep() {
   digitalWrite(tx, LOW);
   pinMode(senderPower, INPUT);
   pinMode(statusLED, INPUT);
-  pinMode(tx, INPUT); // need to do this, otherwise RF consumes
-
-
-//  set_sleep_mode(SLEEP_MODE_PWR_DOWN);  //festlegen des Schlafmoduses
-//  sleep_enable();  //ermoeglichen der angegebenen Schlaffunktion
-//  sleep_mode();  //starten der Schlaffunktion
-//  //hier geht es nach dem Interrupt weiter
-//  sleep_disable();  //deaktivieren der Schlaffunktion
-//  power_all_enable();  //reaktivieren aller Chips/Funktionen
-
+  pinMode(tx, INPUT); // need to do this, otherwise RF data consumes power
+  
   GIMSK |= _BV(PCIE);                     // Enable Pin Change Interrupts
   PCMSK |= _BV(PCINT3);                   // Use PB3 as interrupt pin
   PCMSK |= _BV(PCINT4);                   // Use PB3 as interrupt pin
